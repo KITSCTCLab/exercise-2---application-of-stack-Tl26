@@ -45,7 +45,7 @@ class Evaluate:
   def validate_postfix_expression(self, expression):
     #Check whether the expression is a valid postfix expression.
     #Arguments:
-    #  expression: A String which represents the expression to be validated.
+    #  expression: A list which represents the expression to be validated.
     #Returns:
     #  True if the expression is valid, else returns False
     operands = [element for element in expression if element.isdigit()]
@@ -57,7 +57,7 @@ class Evaluate:
   def evaluate_postfix_expression(self, expression):
     #Evaluate the postfix expression
     #Arguments:
-    #    expression: A String which represents the the expression to be evaluated
+    #    expression: A list which represents the the expression to be evaluated
     #Returns:
     #    The result of evaluated postfix expression.
     self.stack = []
