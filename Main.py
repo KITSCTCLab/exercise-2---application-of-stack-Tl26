@@ -74,7 +74,7 @@ class Evaluate:
     final_result = 0
     for element in elements:
       if element.isdigit():
-        self.push(element)
+        self.push(int(element))
       elif element in "+-*/^":
         if element == "+":
           result = self.stack[-2] + self.stack[-1]
