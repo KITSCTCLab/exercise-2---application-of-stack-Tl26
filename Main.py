@@ -49,8 +49,8 @@ class Evaluate:
     #Returns:
       #True if the expression is valid, else returns False
     elements = expression.split()
-    operands = [element in elements if element.isdigit()]
-    operators = [element if element in ["+", "-", "*", "/", "^"]]
+    operands = [element if element.isdigit() for element in elements]
+    operators = [element if element in ["+", "-", "*", "/", "^"] for element in elements]
     equal_operators_and_operands = (len(operands) + len(operators)) == len(elements)
     return equal_operators_and_operands
 
