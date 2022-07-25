@@ -36,9 +36,9 @@ class Evaluate:
    #Push the operand to stack if the stack is not full.
    #Arguments:
    # operand: The operand to be pushed.
-    if len(self.stack) != self.size_of_stack:
+    if len(self.stack) < self.size_of_stack:
       self.top += 1
-      self.stack.append(data)
+      self.stack.append(operand)
       
 
 
@@ -48,10 +48,9 @@ class Evaluate:
     #  expression: A String which represents the expression to be validated.
     #Returns:
     #  True if the expression is valid, else returns False
-    elements = expression.split()
-    operands = [element for element in elements if element.isdigit()]
-    operators = [element if element in ["+", "-", "*", "/", "^"] for element in elements]
-    return (len(operands) + len(operators)) == len(elements)
+    operands = [element for element in expression if element.isdigit()]
+    operators = [element for element in expression  if element in ["+", "-", "*", "/", "^"]]
+    return (len(operands) + len(operators)) == len(expression)
 
 
   def evaluate_postfix_expression(self, expression):
@@ -61,9 +60,7 @@ class Evaluate:
     #Returns:
     #    The result of evaluated postfix expression.
     self.stack = []
-    elements = expression.split()
-    final_result = 0
-    for element in elements:
+    for element in expression:
       if element.isdigit():
         self.push(int(element))
       elif element in ["+", "-", "*", "/", "^"]:
@@ -77,11 +74,10 @@ class Evaluate:
           result = self.stack[-2] / self.stack[-1]
         elif element == "^":
           result = self.stack[-2] ^ self.stack[-1]
-        final_result += result
         self.pop()
         self.pop()
         self.push(result)
-    return final_result
+    return self.pop()
     
 
 
