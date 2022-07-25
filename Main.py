@@ -72,9 +72,9 @@ class Evaluate:
         elif element == "*":
           result = self.stack[-2] * self.stack[-1]
         elif element == "/":
-          result = self.stack[-2] / self.stack[-1]
+          result = self.stack[-2] // self.stack[-1]
         elif element == "^":
-          result = self.stack[-2] ^ self.stack[-1]
+          result = self.stack[-2] ** self.stack[-1]
         self.pop()
         self.pop()
         self.push(result)
